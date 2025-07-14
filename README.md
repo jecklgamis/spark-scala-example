@@ -81,7 +81,7 @@ Submit a job using Spark Connect client:
 ```bash
 JAVA_OPTS="--add-opens=java.base/java.nio=org.apache.arrow.memory.core,ALL-UNNAMED"
 java $JAVA_OPTS -cp target/spark-scala-example.jar spark.examples.SparkConnectApp
-```k
+```
 
 
 ## Starting Standalone Cluster
