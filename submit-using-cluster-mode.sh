@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+if [ -z "$SPARK_HOME" ]; then
+  echo "SPARK_HOME is not set. Please set it to your Spark installation directory."
+  exit 1
+fi
+
+SPARK_CLUSTER_HOST=$(ipconfig getIfAddr en0)
+echo "Using SPARK_CLUSTER_HOST = $SPARK_CLUSTER_HOST"
+
+$SPARK_HOME/bin/spark-submit \
+  --deploy-mode cluster \
+  --master spark://$SPARK_CLUSTER_HOST:7077 \
+  --conf spark.standalone.submit.waitAppCompletion=true \
+  --class spark.examples.SimpleApp \
+  target/spark-scala-example.jar
